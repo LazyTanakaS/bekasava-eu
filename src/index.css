@@ -1,0 +1,165 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --dark: #1e3028;
+  --dark2: #253d30;
+  --green: #7aaa8a;
+  --green-light: #a8d4b2;
+  --cream: #f4f1eb;
+  --white: #ffffff;
+  --text-muted: #7aaa8a;
+  --text-light: #eef5f0;
+  --font: 'Inter', system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--cream);
+  color: var(--dark);
+  line-height: 1.7;
+}
+
+.service-card {
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.faq-card {
+  transition: border-color 0.2s;
+}
+
+.faq-card:hover {
+  border-color: #7aaa8a !important;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-divider {
+  width: 100%;
+  height: 60px;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.section-divider svg {
+  display: block;
+  width: 100%;
+  height: 60px;
+}
+
+@media (max-width: 768px) {
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .hero-visual {
+    display: none !important;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .about-visual {
+    display: none !important;
+  }
+
+  .desktop-nav {
+    display: none !important;
+  }
+  .burger {
+    display: block !important;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ── Stagger animations for cards ─────────────────────────── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in.visible .service-card:nth-child(1) {
+  animation: fadeInUp 0.5s ease 0.1s both;
+}
+.fade-in.visible .service-card:nth-child(2) {
+  animation: fadeInUp 0.5s ease 0.25s both;
+}
+.fade-in.visible .service-card:nth-child(3) {
+  animation: fadeInUp 0.5s ease 0.4s both;
+}
+
+.fade-in.visible .faq-card:nth-child(1) {
+  animation: fadeInUp 0.45s ease 0.1s both;
+}
+.fade-in.visible .faq-card:nth-child(2) {
+  animation: fadeInUp 0.45s ease 0.22s both;
+}
+.fade-in.visible .faq-card:nth-child(3) {
+  animation: fadeInUp 0.45s ease 0.34s both;
+}
+
+/* ── Respect reduced-motion preference ─────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in,
+  .fade-in.visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    animation: none;
+  }
+  .fade-in.visible .service-card,
+  .fade-in.visible .faq-card {
+    animation: none;
+  }
+}
+
+/* ── Focus-visible styles ───────────────────────────────────── */
+button:focus-visible,
+a:focus-visible,
+[role='button']:focus-visible {
+  outline: 2px solid #7aaa8a;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
