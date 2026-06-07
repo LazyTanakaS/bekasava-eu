@@ -60,18 +60,22 @@ export default function ContactForm({ lang }: ContactFormProps) {
               fontSize: '0.95rem',
             }}
           >
-            <a
-              href={`mailto:${t[lang].contactEmail}`}
-              style={{
-                color: '#eef5f0',
-                textDecoration: 'none',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.6rem',
-              }}
-            >
-              <MailIcon color="#7aaa8a" size={20} /> {t[lang].contactEmail}
-            </a>
+            {t[lang].contactEmail.map((email) => (
+              <a
+                key={email}
+                href={`mailto:${email}`}
+                style={{
+                  color: '#eef5f0',
+                  textDecoration: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.6rem',
+                }}
+              >
+                <MailIcon color="#7aaa8a" size={20} /> {email}
+              </a>
+            ))}
+
             <a
               href={`tel:${t[lang].contactPhone.replace(/\s/g, '')}`}
               style={{
@@ -84,9 +88,15 @@ export default function ContactForm({ lang }: ContactFormProps) {
             >
               <PhoneIcon color="#7aaa8a" size={20} /> {t[lang].contactPhone}
             </a>
-            <p style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-              <MapPinIcon color="#7aaa8a" size={20} /> {t[lang].contactAddress}
-            </p>
+            {t[lang].contactAddress.map((address) => (
+              <p
+                key={address}
+                style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}
+              >
+                <MapPinIcon color="#7aaa8a" size={20} />
+                {address}
+              </p>
+            ))}
             <p style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
               <ClockIcon color="#7aaa8a" size={20} /> {t[lang].contactHours}
             </p>
