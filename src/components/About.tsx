@@ -53,6 +53,9 @@ export default function About({ lang }: AboutProps) {
               {t[lang].aboutTitle}
             </h2>
             <p style={{ color: '#a8d4b2' }}>{t[lang].aboutText}</p>
+            <p style={{ color: '#a8d4b2', marginTop: '1rem' }}>
+              {t[lang].pricingText}
+            </p>
             <div
               ref={countRef as React.RefObject<HTMLDivElement>}
               style={{
