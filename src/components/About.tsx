@@ -29,7 +29,7 @@ export default function About({ lang }: AboutProps) {
           }}
         >
           <img
-            src="./aksana.jpg"
+            src={`${import.meta.env.BASE_URL}aksana.jpg`}
             alt="Mgr. Aksana Bekasava Ph.D."
             style={{
               width: '100%',
